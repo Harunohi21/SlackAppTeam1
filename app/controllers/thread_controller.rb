@@ -9,7 +9,7 @@ class ThreadController < ApplicationController
                                       .where("t_direct_threads.m_user_id=?",params[:user_id]).order(created_at: :asc)
 
     #Select direct thread messages from mysql databases                                  
-    @t_direct_threads = TDirectThread.select("t_direct_threads.id as id,m_users.name,t_direct_threads.directthreadmsg,t_direct_threads.t_direct_message_id,t_direct_threads.created_at")
+    @t_direct_threads = TDirectThread.select("t_direct_threads.m_user_id,t_direct_threads.id as id,m_users.name,t_direct_threads.directthreadmsg,t_direct_threads.t_direct_message_id,t_direct_threads.created_at")
                             .joins("join m_users on t_direct_threads.m_user_id=m_users.id 
                                     join t_direct_messages on t_direct_threads.t_direct_message_id=t_direct_messages.id")
                             .where("t_direct_messages.send_user_id=? or t_direct_messages.receive_user_id=?", 
@@ -24,7 +24,7 @@ class ThreadController < ApplicationController
                                     .where("t_group_threads.m_user_id= ?",params[:user_id]).order(created_at: :asc)
     
     #Select group thread messages from mysql database                                 
-    @t_group_threads = TGroupThread.select("m_users.name, t_group_threads.groupthreadmsg, t_group_threads.id, t_group_threads.t_group_message_id,t_group_threads.created_at")
+    @t_group_threads = TGroupThread.select("t_group_threads.m_user_id,m_users.name, t_group_threads.groupthreadmsg, t_group_threads.id, t_group_threads.t_group_message_id,t_group_threads.created_at")
                                     .joins("INNER JOIN t_group_messages ON t_group_messages.id = t_group_threads.t_group_message_id
                                          INNER JOIN m_users ON t_group_threads.m_user_id = m_users.id ").order(created_at: :asc)
     
