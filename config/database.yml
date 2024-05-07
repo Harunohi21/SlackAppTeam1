@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: db
+  username: postgres
+  password: 369852147
+  # username: root
+  # password: password
+  # host: cmmteam4_backend-mysql-1
+  # socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: group1_development
+
+test:
+  <<: *default
+  database: group1_test
+
+production:
+  <<: *default
+  database: group1_production
+  # adapter: sqlite3
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  # timeout: 5000
+  # username: slack_app
+  # password: <%= ENV['SLACK_APP_DATABASE_PASSWORD'] %>
