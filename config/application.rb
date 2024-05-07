@@ -32,6 +32,6 @@ module FlutterBackend
     # domain追加
     # config.hosts << "flutter-rails-api2.onrender.com"
     # config.hosts << ENV.fetch('RENDER_API_HOST', 'localhost:3000')
-    config.hosts << "slackapi-team1.onrender.com"
+    config.hosts << "slack-app-api.onrender.com"
   end
 end
