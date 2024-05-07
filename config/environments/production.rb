@@ -104,6 +104,6 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-  config.hosts << "slackapi-team1.onrender.com"
+  config.hosts << "slack-app-api.onrender.com"
   # config.hosts << ENV.fetch('RENDER_API_HOST', 'localhost:3000')
 end
